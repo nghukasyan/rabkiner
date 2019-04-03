@@ -1,0 +1,6 @@
+framework module Pods_Rabkiner {
+  umbrella header "Pods-Rabkiner-umbrella.h"
+
+  export *
+  module * { export * }
+}

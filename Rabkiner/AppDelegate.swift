@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,8 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure() 
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil{
+                // not showing home page before auth page ??
+                self.perform(#selector(self.showModalAuth), with: nil, afterDelay: 0)
+            }
+        }
         return true
+    }
+    
+    @objc func showModalAuth(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let authVC = storyboard.instantiateViewController(withIdentifier: "RNavigation")
+        self.window?.rootViewController?.present(authVC, animated: false, completion: nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C0479D25CFCDC8E7080EF7 /* Pods_Rabkiner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375077D0A2BECF1FF9D36460 /* Pods_Rabkiner.framework */; };
+		D04A10E6223D6290008F835A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A10E5223D6290008F835A /* LoginViewController.swift */; };
+		D04A10E9223D62C7008F835A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A10E8223D62C7008F835A /* RegisterViewController.swift */; };
+		D04A10EB223D6DC8008F835A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D04A10EA223D6DC8008F835A /* GoogleService-Info.plist */; };
+		D04A10ED224169AD008F835A /* StartPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A10EC224169AD008F835A /* StartPointViewController.swift */; };
+		D0C4B8B9224D70D400A548FD /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8B8224D70D400A548FD /* MessagesController.swift */; };
+		D0C4B8BB224D78F800A548FD /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8BA224D78F800A548FD /* NewMessageController.swift */; };
+		D0C4B8C0224D8A8C00A548FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8BF224D8A8C00A548FD /* User.swift */; };
+		D0C4B8C222520C8E00A548FD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8C122520C8E00A548FD /* ProfileViewController.swift */; };
+		D0C4B8C6225417CE00A548FD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8C4225417CE00A548FD /* UserCell.swift */; };
+		D0C4B8C7225417CE00A548FD /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C4B8C5225417CE00A548FD /* UserCell.xib */; };
+		D0C4B8CA22541E3500A548FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8C922541E3500A548FD /* Extensions.swift */; };
 		D0EACC63223AC9BE005186E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EACC62223AC9BE005186E0 /* AppDelegate.swift */; };
 		D0EACC65223AC9BE005186E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EACC64223AC9BE005186E0 /* ViewController.swift */; };
 		D0EACC68223AC9BE005186E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EACC66223AC9BE005186E0 /* Main.storyboard */; };
@@ -15,6 +27,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2798E25B0B48D721106E8401 /* Pods-Rabkiner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rabkiner.release.xcconfig"; path = "Target Support Files/Pods-Rabkiner/Pods-Rabkiner.release.xcconfig"; sourceTree = "<group>"; };
+		375077D0A2BECF1FF9D36460 /* Pods_Rabkiner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rabkiner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EAD29F8C563D3DBCC06A266 /* Pods-Rabkiner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rabkiner.debug.xcconfig"; path = "Target Support Files/Pods-Rabkiner/Pods-Rabkiner.debug.xcconfig"; sourceTree = "<group>"; };
+		D04A10E5223D6290008F835A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D04A10E8223D62C7008F835A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D04A10EA223D6DC8008F835A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D04A10EC224169AD008F835A /* StartPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPointViewController.swift; sourceTree = "<group>"; };
+		D0C4B8B8224D70D400A548FD /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		D0C4B8BA224D78F800A548FD /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		D0C4B8BF224D8A8C00A548FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D0C4B8C122520C8E00A548FD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D0C4B8C4225417CE00A548FD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		D0C4B8C5225417CE00A548FD /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		D0C4B8C922541E3500A548FD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0EACC5F223AC9BE005186E0 /* Rabkiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rabkiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EACC62223AC9BE005186E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EACC64223AC9BE005186E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +55,64 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C0479D25CFCDC8E7080EF7 /* Pods_Rabkiner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42A107029E32C725552823A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8EAD29F8C563D3DBCC06A266 /* Pods-Rabkiner.debug.xcconfig */,
+				2798E25B0B48D721106E8401 /* Pods-Rabkiner.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D04A10E7223D62A3008F835A /* AuthControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D04A10E5223D6290008F835A /* LoginViewController.swift */,
+				D04A10E8223D62C7008F835A /* RegisterViewController.swift */,
+				D04A10EC224169AD008F835A /* StartPointViewController.swift */,
+			);
+			path = AuthControllers;
+			sourceTree = "<group>";
+		};
+		D0C4B8BC224D89E600A548FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0C4B8BF224D8A8C00A548FD /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0C4B8C32254178100A548FD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D0C4B8C4225417CE00A548FD /* UserCell.swift */,
+				D0C4B8C5225417CE00A548FD /* UserCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D0C4B8C822541DC200A548FD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0C4B8C922541E3500A548FD /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D0EACC56223AC9BE005186E0 = {
 			isa = PBXGroup;
 			children = (
 				D0EACC61223AC9BE005186E0 /* Rabkiner */,
 				D0EACC60223AC9BE005186E0 /* Products */,
+				42A107029E32C725552823A0 /* Pods */,
+				EC10CFA815993D4D7C4D6A0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +127,30 @@
 		D0EACC61223AC9BE005186E0 /* Rabkiner */ = {
 			isa = PBXGroup;
 			children = (
+				D0C4B8C822541DC200A548FD /* Helpers */,
+				D0C4B8BC224D89E600A548FD /* Model */,
 				D0EACC62223AC9BE005186E0 /* AppDelegate.swift */,
 				D0EACC64223AC9BE005186E0 /* ViewController.swift */,
+				D0C4B8B8224D70D400A548FD /* MessagesController.swift */,
+				D0C4B8BA224D78F800A548FD /* NewMessageController.swift */,
+				D0C4B8C122520C8E00A548FD /* ProfileViewController.swift */,
+				D0C4B8C32254178100A548FD /* Cells */,
+				D04A10E7223D62A3008F835A /* AuthControllers */,
 				D0EACC66223AC9BE005186E0 /* Main.storyboard */,
 				D0EACC69223AC9C2005186E0 /* Assets.xcassets */,
 				D0EACC6B223AC9C2005186E0 /* LaunchScreen.storyboard */,
 				D0EACC6E223AC9C2005186E0 /* Info.plist */,
+				D04A10EA223D6DC8008F835A /* GoogleService-Info.plist */,
 			);
 			path = Rabkiner;
+			sourceTree = "<group>";
+		};
+		EC10CFA815993D4D7C4D6A0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				375077D0A2BECF1FF9D36460 /* Pods_Rabkiner.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0EACC71223AC9C2005186E0 /* Build configuration list for PBXNativeTarget "Rabkiner" */;
 			buildPhases = (
+				80A06E0CE59C71923B01807E /* [CP] Check Pods Manifest.lock */,
 				D0EACC5B223AC9BE005186E0 /* Sources */,
 				D0EACC5C223AC9BE005186E0 /* Frameworks */,
 				D0EACC5D223AC9BE005186E0 /* Resources */,
+				45787C0517CABB4006285C2E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,20 +214,84 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EACC6D223AC9C2005186E0 /* LaunchScreen.storyboard in Resources */,
+				D04A10EB223D6DC8008F835A /* GoogleService-Info.plist in Resources */,
 				D0EACC6A223AC9C2005186E0 /* Assets.xcassets in Resources */,
 				D0EACC68223AC9BE005186E0 /* Main.storyboard in Resources */,
+				D0C4B8C7225417CE00A548FD /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45787C0517CABB4006285C2E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rabkiner/Pods-Rabkiner-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rabkiner/Pods-Rabkiner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80A06E0CE59C71923B01807E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rabkiner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0EACC5B223AC9BE005186E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04A10E6223D6290008F835A /* LoginViewController.swift in Sources */,
+				D04A10ED224169AD008F835A /* StartPointViewController.swift in Sources */,
 				D0EACC65223AC9BE005186E0 /* ViewController.swift in Sources */,
 				D0EACC63223AC9BE005186E0 /* AppDelegate.swift in Sources */,
+				D0C4B8C0224D8A8C00A548FD /* User.swift in Sources */,
+				D0C4B8BB224D78F800A548FD /* NewMessageController.swift in Sources */,
+				D0C4B8C222520C8E00A548FD /* ProfileViewController.swift in Sources */,
+				D04A10E9223D62C7008F835A /* RegisterViewController.swift in Sources */,
+				D0C4B8C6225417CE00A548FD /* UserCell.swift in Sources */,
+				D0C4B8CA22541E3500A548FD /* Extensions.swift in Sources */,
+				D0C4B8B9224D70D400A548FD /* MessagesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +435,7 @@
 		};
 		D0EACC72223AC9C2005186E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EAD29F8C563D3DBCC06A266 /* Pods-Rabkiner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +454,7 @@
 		};
 		D0EACC73223AC9C2005186E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2798E25B0B48D721106E8401 /* Pods-Rabkiner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
