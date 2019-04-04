@@ -9,12 +9,50 @@
 import UIKit
 import Firebase
 class MessagesController: UITableViewController {
-
+    
+    var messages = [Message]()
+    let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showInfo()
+        
+        let image = UIImage(named: "new_message_icon")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showNewMessageController))
+        
+        observeMessages()
     }
+    
+    func observeMessages(){
+        let dbRef = Database.database().reference().child("messages")
+        dbRef.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let message = Message()
+                message.fromId = dictionary["fromId"] as? String
+                message.text = dictionary["text"] as? String
+                message.timestamp = dictionary["timestamp"] as? NSNumber
+                message.toId = dictionary["toId"] as? String
+                self.messages.append(message)
+                
+                //will crush because of background thread
+                self.tableView.reloadData()
+            }
+        }, withCancel: nil)
+    }
+    
+    @objc func showNewMessageController(){
+        let newMessageController = NewMessageController()
+        newMessageController.messageController = self
+        self.navigationController?.pushViewController(newMessageController, animated: true)
+    }
+    
+    func showChatLogController(forUser user: User){
+        let chatLogController = storyboard?.instantiateViewController(withIdentifier: "ChatLogController") as? ChatLogController
+        chatLogController!.user = user
+        self.navigationController?.pushViewController(chatLogController!, animated: true)
+    }
+    
     
     func showInfo(){
         let uid = Auth.auth().currentUser?.uid
@@ -32,23 +70,24 @@ class MessagesController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return messages.count
     }
 
-    /*
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        
+        let message = messages[indexPath.row]
+        cell.textLabel?.text = message.text
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

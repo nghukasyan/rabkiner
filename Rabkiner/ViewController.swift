@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             try Auth.auth().signOut()
         }catch{
             print(error)
-        }
+        } 
         
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 class NewMessageController: UITableViewController {
 
+    var messageController: MessagesController?
     let cellId = "newMessageCell"
     var users = [User]()
     
@@ -22,11 +23,10 @@ class NewMessageController: UITableViewController {
     }
     func fetchUserList(){
         Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
-            
-            print(snapshot)
             if let dictionary = snapshot.value as? [String : AnyObject] {
                 let user = User()
                 
+                user.id = snapshot.key
                 user.name = dictionary["name"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
@@ -72,6 +72,12 @@ class NewMessageController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.popViewController(animated: true)
+        let user = users[indexPath.row]
+        self.messageController?.showChatLogController(forUser: user)
     }
     
     

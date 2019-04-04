@@ -9,9 +9,6 @@
 import UIKit
 import Firebase
 class RegisterViewController: UIViewController {
-
-    var messagesController: MessagesController? = nil
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -52,7 +49,7 @@ extension RegisterViewController: UITextFieldDelegate{
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
             
                 let image = UIImage(named: "emb.png")
-                if let uploadData = image?.pngData(){
+                if let uploadData = image?.jpegData(compressionQuality: 0.1){
                     
                     // 1)Putting image into storage
                     storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
@@ -95,7 +92,6 @@ extension RegisterViewController: UITextFieldDelegate{
                 return
             }
         }
-        messagesController?.showInfo()
         self.dismiss(animated: true, completion: nil)
     }
 }

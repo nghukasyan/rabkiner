@@ -46,7 +46,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
             
             // UIImagePNGRepresentation(UIImage) replaced by UIImage method pngData()
-            if let uploadData = self.profileImage.image!.pngData(){
+            // instead of image.pngData() we use image.jpegData(compressionQuality: 0.1)
+            if let image = self.profileImage.image, let uploadData = image.jpegData(compressionQuality: 0.1){
                 storageRef.putData(uploadData)
                     
                 storageRef.putData(uploadData, metadata: nil) { (_, err) in

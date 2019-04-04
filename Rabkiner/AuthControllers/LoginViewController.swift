@@ -10,8 +10,6 @@ import UIKit
 import Firebase
 class LoginViewController: UIViewController {
     
-    var messagesController: MessagesController? = nil
-    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
@@ -41,7 +39,7 @@ extension LoginViewController: UITextFieldDelegate{
         if(!email.isEmpty && !password.isEmpty){
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if error == nil{
-                    self.messagesController?.showInfo()
+                    //self.messagesController?.showInfo()
                     self.dismiss(animated: false, completion: nil)
                 }
             }
