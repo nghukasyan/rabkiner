@@ -18,6 +18,7 @@ class MessagesController: UITableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateWhenLogin), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
         showInfo()
         
         tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: cellId)
@@ -38,6 +39,17 @@ class MessagesController: UITableViewController {
         observeUserMessages()
     }
     
+    func showInfo() {
+        let uid = Auth.auth().currentUser?.uid
+        let dbRef = Database.database().reference().child("users").child(uid!)
+        dbRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let dictionary = snapshot.value as? [String : AnyObject] {
+                    self.navigationItem.title = dictionary["name"] as? String
+                
+            }
+        }
+    }
+    
     func observeUserMessages(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
@@ -49,6 +61,7 @@ class MessagesController: UITableViewController {
             
             messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
+                    
                     let message = Message()
                     message.fromId = dictionary["fromId"] as? String
                     message.text = dictionary["text"] as? String
@@ -56,8 +69,8 @@ class MessagesController: UITableViewController {
                     message.toId = dictionary["toId"] as? String
                     //                self.messages.append(message)
                     
-                    if let toId = message.toId {
-                        self.messagesDictionary[toId] = message
+                    if let partnerId = message.chatPartnerId() {
+                        self.messagesDictionary[partnerId] = message
                         self.messages = Array(self.messagesDictionary.values)
                         self.messages.sort(by: { (message1, message2) -> Bool in
                             return message1.timestamp!.int64Value > message2.timestamp!.int64Value
@@ -67,36 +80,12 @@ class MessagesController: UITableViewController {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+                    
                 }
             })
         }
     }
-    
-    func observeMessages(){
-        let dbRef = Database.database().reference().child("messages")
-        dbRef.observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message()
-                message.fromId = dictionary["fromId"] as? String
-                message.text = dictionary["text"] as? String
-                message.timestamp = dictionary["timestamp"] as? NSNumber
-                message.toId = dictionary["toId"] as? String
-//                self.messages.append(message)
-                
-                if let toId = message.toId {
-                    self.messagesDictionary[toId] = message
-                    self.messages = Array(self.messagesDictionary.values)
-                    self.messages.sort(by: { (message1, message2) -> Bool in
-                        return message1.timestamp!.int64Value > message2.timestamp!.int64Value
-                    })
-                }
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }, withCancel: nil)
-    }
+
     
     @objc func showNewMessageController(){
         let newMessageController = NewMessageController()
@@ -110,27 +99,12 @@ class MessagesController: UITableViewController {
         self.navigationController?.pushViewController(chatLogController!, animated: true)
     }
     
-    func showInfo(){
-        let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value) { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String : AnyObject] {
-                self.navigationItem.title = dictionary["name"] as? String
-                
-            }
-            
-        }
-    }
-    
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return messages.count
     }
 
@@ -147,50 +121,24 @@ class MessagesController: UITableViewController {
         return cell
     }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = messages[indexPath.row]
+        
+        guard let chatPartnerId = message.chatPartnerId() else{return}
+        
+        let ref = Database.database().reference().child("users").child(chatPartnerId)
+        
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+            
+            let user = User()
+            user.id = chatPartnerId
+            user.email = dictionary["email"] as? String
+            user.name = dictionary["name"] as? String
+            user.profileImageUrl = dictionary["profileImageUrl"] as? String
+            
+            self.showChatLogController(forUser: user)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

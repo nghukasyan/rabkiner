@@ -21,6 +21,8 @@
 		D0C4B8C6225417CE00A548FD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8C4225417CE00A548FD /* UserCell.swift */; };
 		D0C4B8C7225417CE00A548FD /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C4B8C5225417CE00A548FD /* UserCell.xib */; };
 		D0C4B8CA22541E3500A548FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B8C922541E3500A548FD /* Extensions.swift */; };
+		D0CE892F2257ADAB00725AD5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE892D2257ADAB00725AD5 /* MessageCell.swift */; };
+		D0CE89302257ADAB00725AD5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CE892E2257ADAB00725AD5 /* MessageCell.xib */; };
 		D0EACC63223AC9BE005186E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EACC62223AC9BE005186E0 /* AppDelegate.swift */; };
 		D0EACC65223AC9BE005186E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EACC64223AC9BE005186E0 /* ViewController.swift */; };
 		D0EACC68223AC9BE005186E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EACC66223AC9BE005186E0 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		D0C4B8C4225417CE00A548FD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		D0C4B8C5225417CE00A548FD /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		D0C4B8C922541E3500A548FD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0CE892D2257ADAB00725AD5 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		D0CE892E2257ADAB00725AD5 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		D0EACC5F223AC9BE005186E0 /* Rabkiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rabkiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EACC62223AC9BE005186E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EACC64223AC9BE005186E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				D0C4B8C4225417CE00A548FD /* UserCell.swift */,
 				D0C4B8C5225417CE00A548FD /* UserCell.xib */,
+				D0CE892D2257ADAB00725AD5 /* MessageCell.swift */,
+				D0CE892E2257ADAB00725AD5 /* MessageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 				TargetAttributes = {
 					D0EACC5E223AC9BE005186E0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -220,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EACC6D223AC9C2005186E0 /* LaunchScreen.storyboard in Resources */,
+				D0CE89302257ADAB00725AD5 /* MessageCell.xib in Resources */,
 				D04A10EB223D6DC8008F835A /* GoogleService-Info.plist in Resources */,
 				D0EACC6A223AC9C2005186E0 /* Assets.xcassets in Resources */,
 				D0EACC68223AC9BE005186E0 /* Main.storyboard in Resources */,
@@ -300,6 +308,7 @@
 				D0C4B8C6225417CE00A548FD /* UserCell.swift in Sources */,
 				D0C4B8CA22541E3500A548FD /* Extensions.swift in Sources */,
 				D0C4B8B9224D70D400A548FD /* MessagesController.swift in Sources */,
+				D0CE892F2257ADAB00725AD5 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbook.Rabkiner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -474,7 +483,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbook.Rabkiner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
