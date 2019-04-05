@@ -10,10 +10,14 @@ import UIKit
 import Firebase
 class LoginViewController: UIViewController {
     
+    var messagesController: MessagesController?
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.updateViewConstraints()
+        
         
         passwordField.delegate = self
     }
@@ -40,6 +44,7 @@ extension LoginViewController: UITextFieldDelegate{
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if error == nil{
                     //self.messagesController?.showInfo()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                     self.dismiss(animated: false, completion: nil)
                 }
             }

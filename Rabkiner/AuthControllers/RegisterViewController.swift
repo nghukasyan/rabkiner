@@ -92,6 +92,7 @@ extension RegisterViewController: UITextFieldDelegate{
                 return
             }
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
 }

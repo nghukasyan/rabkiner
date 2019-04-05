@@ -55,8 +55,8 @@ class NewMessageController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! UserCell
         
         let user = users[indexPath.row]
-        cell.nameField.text = user.name
-        cell.emailField.text = user.email
+        cell.textField.text = user.name
+        cell.detailTextField.text = user.email
         
         
         if let profileImageUrl = user.profileImageUrl {

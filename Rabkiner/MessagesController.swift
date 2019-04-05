@@ -11,17 +11,65 @@ import Firebase
 class MessagesController: UITableViewController {
     
     var messages = [Message]()
+    var messagesDictionary = [String: Message]()
     let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWhenLogin), name: NSNotification.Name(rawValue: "load"), object: nil)
         showInfo()
+        
+        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: cellId)
         
         let image = UIImage(named: "new_message_icon")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showNewMessageController))
         
-        observeMessages()
+        observeUserMessages()
+    }
+    
+    @objc func updateWhenLogin(){
+        showInfo()
+        
+        messages.removeAll()
+        messagesDictionary.removeAll()
+        tableView.reloadData()
+        
+        observeUserMessages()
+    }
+    
+    func observeUserMessages(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        let dbRef = Database.database().reference().child("user-messages").child(uid)
+        
+        dbRef.observe(.childAdded) { (snapshot) in
+            let messageId = snapshot.key
+            let messagesReference = Database.database().reference().child("messages").child(messageId)
+            
+            messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    let message = Message()
+                    message.fromId = dictionary["fromId"] as? String
+                    message.text = dictionary["text"] as? String
+                    message.timestamp = dictionary["timestamp"] as? NSNumber
+                    message.toId = dictionary["toId"] as? String
+                    //                self.messages.append(message)
+                    
+                    if let toId = message.toId {
+                        self.messagesDictionary[toId] = message
+                        self.messages = Array(self.messagesDictionary.values)
+                        self.messages.sort(by: { (message1, message2) -> Bool in
+                            return message1.timestamp!.int64Value > message2.timestamp!.int64Value
+                        })
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            })
+        }
     }
     
     func observeMessages(){
@@ -33,10 +81,19 @@ class MessagesController: UITableViewController {
                 message.text = dictionary["text"] as? String
                 message.timestamp = dictionary["timestamp"] as? NSNumber
                 message.toId = dictionary["toId"] as? String
-                self.messages.append(message)
+//                self.messages.append(message)
                 
-                //will crush because of background thread
-                self.tableView.reloadData()
+                if let toId = message.toId {
+                    self.messagesDictionary[toId] = message
+                    self.messages = Array(self.messagesDictionary.values)
+                    self.messages.sort(by: { (message1, message2) -> Bool in
+                        return message1.timestamp!.int64Value > message2.timestamp!.int64Value
+                    })
+                }
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }, withCancel: nil)
     }
@@ -52,7 +109,6 @@ class MessagesController: UITableViewController {
         chatLogController!.user = user
         self.navigationController?.pushViewController(chatLogController!, animated: true)
     }
-    
     
     func showInfo(){
         let uid = Auth.auth().currentUser?.uid
@@ -78,13 +134,16 @@ class MessagesController: UITableViewController {
         return messages.count
     }
 
-  
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! UserCell
         
         let message = messages[indexPath.row]
-        cell.textLabel?.text = message.text
-
+        cell.message = message
+        
         return cell
     }
  
